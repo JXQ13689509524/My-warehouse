@@ -1,10 +1,65 @@
 
+user:
+  username: admin
+  password: 123
+server:
+  port: 8022
+  tomcat:
+    uri-encoding: UTF-8
+    max-http-header-size: 8096
+
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost/student?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 694461650
+  application:
+    name: provider-student
+  security:
+    user:
+      name: eureka
+      password: 123456
+#  redis:
+#    host: 47.101.178.83
+#    port: 6379
+#    password:
+#  jedis:
+#    pool:
+#      max-active: 8
+#      max-wait: -1
+#      max-idle: 500
+#      min-idle: 0
+#  lettuce:
+#    shutdown-timeout: 0
+
+
+mybatis:
+  mapper-locations: classpath:*Mapper.xml
+  config-location: classpath:mybatis-config.xml
+
+
+eureka:
+  instance:
+    # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-renewal-interval-in-seconds: 5
+    # 发呆时间，即服务续约到期时间（缺省为90s）
+    lease-expiration-duration-in-seconds: 15
+  client:
+    #开启健康检查,需要依赖spring-boot-starter-actuator,监测Eureka客户端和服务器是否正常
+    healthcheck:
+      enabled: true
+    service-url:
+      #注册中心地址
+      defaultZone: http://eureka:123456@127.0.0.1:8761/eureka
+#全局日志
+logging:
+  level:
+    root: info
+
+
+
+
 
 
 
